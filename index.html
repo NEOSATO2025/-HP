@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>テストページ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #0366d6;
+        }
+    </style>
 </head>
 <body>
-    <h1>こんにちは！</h1>
-    <p>このページが表示されれば成功です。</p>
+    <h1>テストページ</h1>
+    <p>このページが表示されれば、GitHub Pagesの設定は正常に動作しています。</p>
+    <p>現在の時刻: <span id="current-time"></span></p>
+    
+    <script>
+        // 現在の時刻を表示
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleString();
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
 </body>
 </html>
