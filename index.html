@@ -1,33 +1,513 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>テストページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ネオサト - 海外生・帰国生教育サポート</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
-            color: #333;
+        * {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
         }
-        h1 {
-            color: #0366d6;
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://page.gensparksite.com/v1/base64_upload/5cc2833c90b8a60d3171c60ba2487434');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .contact-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        .nav-link:hover {
+            color: #fbbf24;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            color: #1f2937;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .experience-highlight {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .note-button {
+            background: linear-gradient(135deg, #41C9B4 0%, #2D9CDB 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .note-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(65, 201, 180, 0.4);
         }
     </style>
-</head><img src="images/logo.png" alt="ロゴ画像">
-<body>
-    <h1>テストページ</h1>
-    <p>このページが表示されれば、GitHub Pagesの設定は正常に動作しています。</p>
-    <p>現在の時刻: <span id="current-time"></span></p>
-    
+</head>
+<body class="bg-gray-50">
+    <!-- ヒーローセクション -->
+    <section class="hero-bg min-h-screen flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div class="text-center text-white z-10 px-4 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-shadow-lg">
+                <span class="block text-2xl md:text-3xl mb-2">海外生・帰国生教育サポート</span>
+                <span class="text-5xl md:text-6xl text-yellow-300">ネオサト</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-8 text-gray-100 leading-relaxed">
+                <span class="experience-highlight text-yellow-300 text-2xl">35年以上</span>の豊富な経験で<br>
+                世界各国の海外生・帰国生をトータルサポート
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#individual" class="nav-link bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2">
+                    <i class="fas fa-user"></i> 個人向け
+                </a>
+                <a href="#institutions" class="nav-link bg-green-600 hover:bg-green-700 px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2">
+                    <i class="fas fa-school"></i> 在外教育施設向け
+                </a>
+                <a href="#corporate" class="nav-link bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2">
+                    <i class="fas fa-building"></i> 法人向け
+                </a>
+            </div>
+            <div class="mt-8">
+                <a href="#services" class="text-white hover:text-yellow-300 transition-colors">
+                    <i class="fas fa-chevron-down text-2xl animate-bounce"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービス概要 -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 section-title">サービス概要</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto text-lg">
+                海外生、帰国生の教育に携わって<span class="experience-highlight">35年余り</span>。<br>
+                世界各国での豊富な指導・講演経験を活かし、お一人お一人に最適なサポートを提供いたします。
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-globe-americas text-3xl service-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">世界各国での実績</h3>
+                    <p class="text-gray-600">イギリス、フランス、ドイツ、アジア、北米など世界各国での講演・相談実績</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-3xl service-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">総合的なサポート</h3>
+                    <p class="text-gray-600">赴任前から帰国まで、すべての段階でトータルサポートを提供</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-users text-3xl service-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">幅広い対象</h3>
+                    <p class="text-gray-600">個人から教育機関、企業まで多様なニーズに対応</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 個人向けサービス -->
+    <section id="individual" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title">個人向けサービス</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-plane-departure text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">赴任前教育相談</h3>
+                    <p class="text-gray-600 text-center">現地校、インター校、日本人学校などの学校選択相談</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-home text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">海外滞在中の家庭教育相談</h3>
+                    <p class="text-gray-600 text-center">塾選びなど、現地での教育環境整備をサポート</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-plane-arrival text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">帰国時の進路相談</h3>
+                    <p class="text-gray-600 text-center">受験校選定アドバイスや帰国枠受験全般のサポート</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-yellow-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-laptop text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">オンライン個別指導</h3>
+                    <p class="text-gray-600 text-center">国語、作文、社会、面接など幅広い科目に対応</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover md:col-span-2 lg:col-span-2">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-heart text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3 text-gray-800">家庭教育全般サポート</h3>
+                    <p class="text-gray-600 text-center">その他、家庭教育に関するあらゆるご相談に対応いたします</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 在外教育施設向けサービス -->
+    <section id="institutions" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title">在外教育施設向けサービス</h2>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user-graduate text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4 text-gray-800">生徒向け 進路選択・準備セミナー</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>講演形式での進路指導セミナー</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>個別進路相談</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-green-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-users text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4 text-gray-800">保護者向け 帰国受験セミナー</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>帰国枠受験基礎知識など、保護者の皆様向けセミナー</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>個別進路相談</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-purple-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-chalkboard-teacher text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4 text-gray-800">教師向け 指導アドバイス</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>転・編入試験を含む帰国枠受験基礎知識セミナー</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>中学受験、高校受験における進路指導技術セミナー</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 法人向けサービス -->
+    <section id="corporate" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title">法人向けサービス</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-presentation text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-center mb-4 text-gray-800">海外赴任前教育セミナー</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">
+                        現地校、インター校、日本人学校などの学校選択相談を中心とした、赴任予定者向けの総合的な教育セミナーを実施いたします。
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user-tie text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-center mb-4 text-gray-800">個人向け 赴任前個別相談</h3>
+                    <p class="text-gray-600 text-center leading-relaxed">
+                        海外赴任予定者の方々を対象とした、個別のニーズに応じたきめ細やかな相談サービスを提供いたします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 実績・経験 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title">実績・経験</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8 shadow-lg">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                            <span class="experience-highlight text-4xl">35年以上</span>の豊富な経験
+                        </h3>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            海外生、帰国生の教育に携わって35年余り。海外での指導経験はもちろん、
+                            世界各国での講演会、個別相談会を実施してきた豊富な経験を活かし、
+                            皆様のお役に立てるよう努めております。
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-3 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marked-alt text-2xl text-blue-600"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-2">ヨーロッパ</h4>
+                            <p class="text-sm text-gray-600">イギリス、フランス、イタリア、ドイツ</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-3 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marked-alt text-2xl text-green-600"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-2">アジア</h4>
+                            <p class="text-sm text-gray-600">中国、韓国、シンガポール、マレーシア、インド、インドネシア、タイ、ベトナム</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-3 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marked-alt text-2xl text-purple-600"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-800 mb-2">北米</h4>
+                            <p class="text-sm text-gray-600">アメリカ、カナダ</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-white rounded-lg shadow-sm">
+                        <p class="text-gray-700 leading-relaxed">
+                            また、国内においては、航空会社や海外に支店を持つ法人に対して、
+                            海外赴任予定者に向けた赴任前教育セミナーなどの講師も務めてまいりました。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Note連携セクション -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title">最新記事・情報発信</h2>
+            <div class="max-w-2xl mx-auto text-center">
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-teal-100 to-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fab fa-medium text-4xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">最新記事はこちら</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        海外教育や帰国受験に関する最新情報、お役立ち記事を<br>
+                        Noteで定期的に配信しています。
+                    </p>
+                    <a href="https://note.com/hot_bee6989" target="_blank" rel="noopener noreferrer" 
+                       class="note-button text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 hover:text-white text-lg">
+                        <i class="fab fa-medium text-xl"></i>
+                        <span>Noteで記事を読む</span>
+                        <i class="fas fa-external-link-alt text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="py-16 gradient-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">お問い合わせ</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- メールでのお問い合わせ -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-3xl text-blue-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-2">メールでのお問い合わせ</h3>
+                            <p class="text-green-600 font-semibold">24時間受付中（返信は４８時間以内）</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="mailto:neosato20250401@gmail.com?subject=お問い合わせ" 
+                               class="contact-button text-white px-6 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:text-white">
+                                <i class="fas fa-paper-plane"></i>
+                                neosato20250401@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- お電話でのお問い合わせ -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-3xl text-green-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-2">お電話でのお問い合わせ</h3>
+                        </div>
+                        <div class="text-center">
+                            <a href="tel:+81-80-5511-3439" 
+                               class="contact-button text-white px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:text-white mb-3">
+                                <i class="fas fa-phone"></i>
+                                +81-80-5511-3439
+                            </a>
+                            <p class="text-sm text-gray-600 font-semibold">（10：00～17：00　日本時間）</p>
+                            <p class="text-xs text-red-600 mt-2">
+                                緊急な場合以外はメールにてご連絡ください。<br>
+                                タイミングによっては対応しかねる場合がございます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 住所 -->
+                <div class="mt-8 text-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6 inline-block">
+                        <div class="flex items-center justify-center gap-3 text-gray-700">
+                            <i class="fas fa-map-marker-alt text-xl text-red-500"></i>
+                            <span class="text-lg">【所在地】〒211-0053　神奈川県川崎市中原区上小田中3-29-2-220</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-2">ネオサト</h3>
+            <p class="text-gray-400 mb-4">海外生・帰国生教育サポート</p>
+            <div class="flex justify-center items-center gap-6 mb-4">
+                <a href="https://note.com/hot_bee6989" target="_blank" rel="noopener noreferrer" 
+                   class="text-gray-400 hover:text-teal-400 transition-colors">
+                    <i class="fab fa-medium text-2xl"></i>
+                </a>
+            </div>
+            <p class="text-sm text-gray-500">
+                &copy; 2025 NeosaTo. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
     <script>
-        // 現在の時刻を表示
-        function updateTime() {
-            const now = new Date();
-            document.getElementById('current-time').textContent = now.toLocaleString();
-        }
-        updateTime();
-        setInterval(updateTime, 1000);
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // スクロール時のアニメーション効果
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // アニメーション対象要素の初期設定
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
     </script>
+
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDme5n4PjE1dXc6fS9Q8lAwbp8r2HU%2FMmXqDCcAvkC%2FhkEi3uh9bERpIy1g29196vHhovMFXG6aHaStKv1ushfU9FMLhhL3tlskdxAqIx%2FgbLiTRpDtL7r7RJo3FVD8p1C8o61YKLfLsHpEM7GRBPqkuro5WPDZsy7J6AD09%2FsPda7w1CDFsO6t1d8tqpWFHmKq9eLOqyGcSJ%2Bppm9VDmpUS0Kohw8LZPEYsQvV4zp14f0ZzdW564ipIJJC02yGawmC0mzTQm37hxAbUIo7ajQo%2FPdAVXxwZqXpDgiu8ONR%2F6MgPn1x77mo4rW23Z9mjyVsbkM0iToL4mXKh5FGpdUddY7FA0UuLY1%2BG6D5xmZzjIOOdOaA%2FYVfH4xxCRdzLJad2m2FPCUGOEtgVieNHYt4dgZpwWePgl3EUJt3ZkQQxcdnxWihAI3dkG6qJYiBL7oCmwjFFFfHqk8xl86i%2BPfg3NVoJH4vSoC%2Fg9cK%2B9IkZKInWYYak3Xs3nG%2FOq0zj3%2Bw%3D%3D";
+        window.__genspark_locale = "ja-JP";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDme5n4PjE1dXc6fS9Q8lAwbp8r2HU/MmXqDCcAvkC/hkEi3uh9bERpIy1g29196vHhovMFXG6aHaStKv1ushfU9FMLhhL3tlskdxAqIx/gbLiTRpDtL7r7RJo3FVD8p1C8o61YKLfLsHpEM7GRBPqkuro5WPDZsy7J6AD09/sPda7w1CDFsO6t1d8tqpWFHmKq9eLOqyGcSJ+ppm9VDmpUS0Kohw8LZPEYsQvV4zp14f0ZzdW564ipIJJC02yGawmC0mzTQm37hxAbUIo7ajQo/PdAVXxwZqXpDgiu8ONR/6MgPn1x77mo4rW23Z9mjyVsbkM0iToL4mXKh5FGpdUddY7FA0UuLY1+G6D5xmZzjIOOdOaA/YVfH4xxCRdzLJad2m2FPCUGOEtgVieNHYt4dgZpwWePgl3EUJt3ZkQQxcdnxWihAI3dkG6qJYiBL7oCmwjFFFfHqk8xl86i+Pfg3NVoJH4vSoC/g9cK+9IkZKInWYYak3Xs3nG/Oq0zj3+w==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
 </body>
 </html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDrVXg3pJaPTsErPpNImQbzykSqVPiNwAjNdul%2F3ij5EWzu1MII1CRQB9ydjLEPIBTjKPGUAIXQ4L9HSTaQXbi1QUJG3lqyHtXVFeT%2F1x69hJ0NJdejAzm6x1hgcDOhjLncNrRMrs%2FXeQ5MXtHWv1d7Bgjf5owdMphnaOFSHV%2BrDLV31LO1haG6siWBrgu%2B%2FitlyCHZ%2B%2FY220o5dLjiTQb5bHEFhOmjd0SMc5x6%2FnvDUWfaAfpX8WNx25TdS7lT9Lp%2B8Ucuv6oTHQQsnOlfMiwdbAct53DEwTpR8IWgB9zDUWMAiARNHmhR2SNJ6ZcAtikncDn%2FxuQGYNC4oWV2r%2FnBLLx4CZJCjHHsxwGUsFuYpO4tSEryJr3C3q7BXwYz5R9D%2FNWTauFpQeDqDt6Dv39aMptQtLKiuxwGG1meh0EiHTTVJzxMssSiOZGLamTCbrSAb6jfpuogry0ByOQclQlx2g1FCPma789cvaykMzzLoglfE%2BAzOpyUA1Ydhp0glmZNjSpIrjLhPm5SS9iSi1AXk%3D";
+        window.__genspark_locale = "ja-JP";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDrVXg3pJaPTsErPpNImQbzykSqVPiNwAjNdul/3ij5EWzu1MII1CRQB9ydjLEPIBTjKPGUAIXQ4L9HSTaQXbi1QUJG3lqyHtXVFeT/1x69hJ0NJdejAzm6x1hgcDOhjLncNrRMrs/XeQ5MXtHWv1d7Bgjf5owdMphnaOFSHV+rDLV31LO1haG6siWBrgu+/itlyCHZ+/Y220o5dLjiTQb5bHEFhOmjd0SMc5x6/nvDUWfaAfpX8WNx25TdS7lT9Lp+8Ucuv6oTHQQsnOlfMiwdbAct53DEwTpR8IWgB9zDUWMAiARNHmhR2SNJ6ZcAtikncDn/xuQGYNC4oWV2r/nBLLx4CZJCjHHsxwGUsFuYpO4tSEryJr3C3q7BXwYz5R9D/NWTauFpQeDqDt6Dv39aMptQtLKiuxwGG1meh0EiHTTVJzxMssSiOZGLamTCbrSAb6jfpuogry0ByOQclQlx2g1FCPma789cvaykMzzLoglfE+AzOpyUA1Ydhp0glmZNjSpIrjLhPm5SS9iSi1AXk=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
